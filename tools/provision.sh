@@ -50,6 +50,10 @@ function main() {
     log "detected ubuntu ($DISTRO)"
     source "$SCRIPT_DIR/provision/ubuntu.sh"
     main_ubuntu
+  elif [[ $OS = "arch" ]]; then
+    log "detected arch"
+    source "$SCRIPT_DIR/provision/arch.sh"
+    main_arch
   elif [[ $OS = "darwin" ]]; then
     log "detected mac os x ($DISTRO)"
     source "$SCRIPT_DIR/provision/darwin.sh"

@@ -245,6 +245,13 @@ function package() {
       log "installing $1"
       sudo yum install $1 -y
     fi
+  elif [[ $OS = "arch" ]]; then
+    if pacman -Q $1; then
+      log "$1 is already installed. skipping."
+    else
+      log "installing $1"
+      sudo pacman -S --noconfirm $1
+    fi
   elif [[ $OS = "darwin" ]]; then
     if [[ -n "$(brew list | grep $1)" ]]; then
       log "$1 is already installed. skipping."
@@ -274,6 +281,13 @@ function remove_package() {
     if [[ -n "$(rpm -qa | grep $1)" ]]; then
       log "removing $1"
       sudo yum remove $1 -y
+    else
+      log "Removing: $1 is not installed. skipping."
+    fi
+  elif [[ $OS = "arch" ]]; then
+    if pacman -Q $1; then
+      log "removing $1"
+      sudo pacman -Rc --noconfirm $1
     else
       log "Removing: $1 is not installed. skipping."
     fi
