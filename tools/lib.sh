@@ -15,6 +15,8 @@ function platform() {
     eval $__out="centos"
   elif [[ -n `grep -o "Red Hat Enterprise" $RH_RELEASE 2>/dev/null` ]]; then
     eval $__out="rhel"
+  elif [[ -n `grep -o "Fedora" $RH_RELEASE 2>/dev/null` ]]; then
+    eval $__out="fedora"
   elif [[ -f "/etc/lsb-release" ]]; then
     eval $__out=`lsb_release -is | tr '[:upper:]' '[:lower:]'`
   elif [[ -f "/etc/arch-release" ]]; then
@@ -35,6 +37,8 @@ function distro() {
     eval $__out=`grep -o "release [6-7]" $RH_RELEASE | sed 's/release /centos/g'`
   elif [[ $1 = "rhel" ]]; then
     eval $__out=`grep -o "release [6-7]" $RH_RELEASE | sed 's/release /rhel/g'`
+  elif [[ $1 = "fedora" ]]; then
+    eval $__out=`grep -o "release [0-9]\\+" $RH_RELEASE | sed 's/release /fedora/g'`
   elif [[ $1 = "ubuntu" ]]; then
     eval $__out=`lsb_release -cs`
   elif [[ $1 = "arch" ]]; then

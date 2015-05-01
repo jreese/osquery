@@ -44,8 +44,8 @@ function main_arch() {
   package boost  # libboost1.55-all-dev
   package boost-libs
 
-  package cmake  # install_cmake
-  package gflags  # install_gflags
+  install_cmake
+  install_gflags
 
   remove_package libunwind
 

@@ -12,6 +12,7 @@ Vagrant.configure("2") do |config|
    %w{centos7   chef/centos-7.0},
    %w{ubuntu14  ubuntu/trusty64},
    %w{ubuntu12  ubuntu/precise64},
+   %w{fedora21  chef/fedora-21},
    %w{arch      terrywang/archlinux},
    %w{freebsd10 chef/freebsd-10.0}
  ].each do |machine|

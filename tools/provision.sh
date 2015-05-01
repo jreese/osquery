@@ -50,6 +50,10 @@ function main() {
     log "detected ubuntu ($DISTRO)"
     source "$SCRIPT_DIR/provision/ubuntu.sh"
     main_ubuntu
+  elif [[ $OS = "fedora" ]]; then
+    log "detected fedora ($DISTRO)"
+    source "$SCRIPT_DIR/provision/fedora.sh"
+    main_fedora
   elif [[ $OS = "arch" ]]; then
     log "detected arch"
     source "$SCRIPT_DIR/provision/arch.sh"
